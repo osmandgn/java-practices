@@ -48,6 +48,25 @@ public class StringAndCharacterCounter {
     }
 
 
+    public static void wordCounter(String str) {
+        HashMap<String, Integer> myMap = new HashMap<>();
+        String[] strArray = str.split(" ");
+        for (String w : strArray) {
+            if (myMap.containsKey(w)) {
+                myMap.put(w, myMap.get(w) + 1);
+            } else {
+                myMap.put(w, 1);
+            }
+        }
+
+        for (Map.Entry<String, Integer> q : myMap.entrySet()) {
+            if (q.getValue() > 1) {
+                System.out.println(q);
+            }
+        }
+
+
+    }
 
 
 
