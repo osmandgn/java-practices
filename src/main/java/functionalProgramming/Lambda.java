@@ -87,6 +87,32 @@ public class Lambda {
         return people.stream().collect(Collectors.groupingBy(Person::getNationality, Collectors.toList()));
     }
 
+    public static String namesToString1(List<Person> people) {
+        return "Names: " +  people.stream().map(Person::getName).reduce((t, s) -> t + ", " + s).get() + ".";
+    }
+
+    public static String namesToString(List<Person> people) {
+        return "Names: " +
+                people.stream().map(Person::getName).collect(Collectors.joining(", ")) +
+                ".";
+    }
+
+    public static String getString(List<Integer> list) {
+        return list.stream().map(t -> t % 2 == 0 ? "e" + t : "o" + t).collect(Collectors.joining(","));
+    }
+
+
+
+    public static String getString1(List<Integer> list) {
+        return list.stream().
+                map(t -> {String s = "";
+                    if (t % 2 == 0){s += "e" + t;}
+                    else{s+= "o" + t;} return s;})
+                .collect(Collectors.joining(","));
+    }
+
+
+
 
 
 
@@ -134,10 +160,11 @@ public class Lambda {
         System.out.println(oldestPerson);
         System.out.println(oldestPerson2);
 
-
-
-
-
+        System.out.println("--------------");
+        List<Integer> inList = new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9));
+        System.out.println(getString(inList));
+        System.out.println(getString1(inList));
+        in
 
 
     }
