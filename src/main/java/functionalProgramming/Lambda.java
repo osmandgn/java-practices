@@ -62,14 +62,16 @@ public class Lambda {
 
 
     public static Set<String> getKidNames(List<Person> people) {
-        Set<String> kids = new HashSet<>();
-        for (Person person : people) {
-            if (person.getAge() < 18) {
-                kids.add(person.getName());
-            }
-        }
-        return kids;
+        return people.stream().filter(t -> t.getAge() < 18).map(t -> t.getName()).collect(Collectors.toSet());
     }
+
+
+    public static Map<Boolean, List<Person>> partitionAdults1(List<Person> people) {
+       return people.stream().collect(Collectors.
+               groupingBy(person -> person.getAge() >= 18, Collectors.toList()));
+
+    }
+
 
 
 
