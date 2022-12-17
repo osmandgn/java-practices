@@ -1,7 +1,6 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+package functionalProgramming;
+
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Lambda {
@@ -22,6 +21,20 @@ public class Lambda {
         List<Integer> intList = transformInt(number);
         System.out.println(intList);
         System.out.println(longestWord(stringList));
+        Person person1 = new Person("Selami", 8, "Turkish");
+        Person person4 = new Person("Mehmet", 35, "Turkish");
+        Person person3 = new Person("Osman", 18, "Turkish");
+        Person person2 = new Person("Ahmet", 25, "Turkish");
+        List<Person> personList = new ArrayList<>();
+        personList.add(person1);
+        personList.add(person2);
+        personList.add(person4);
+        personList.add(person3);
+        Person oldesPrs = getOldestPerson(personList);
+
+
+
+
 
 
     }
@@ -40,7 +53,7 @@ public class Lambda {
                 mapToInt(String::length).sum();
     }
 
-    public static List<String> transform(List<List<String>> collection) {
+    public static List<String> transformString(List<List<String>> collection) {
         return collection.stream().
                 flatMap(Collection::stream).
                 collect(Collectors.toList());
@@ -57,16 +70,14 @@ public class Lambda {
                 reduce(Integer::max).get();
     }
 
+    public static void printOldestPerson(List<Person> people) {
+        people.stream().sorted(Comparator.comparing(Person::getAge).reversed()).limit(1).forEach(t -> System.out.println(t));
 
+    }
 
-
-
-
-
-
-
-
-
+    public static Person getOldestPerson(List<Person> people) {
+        return people.stream().reduce((t, k) -> t.getAge() > k.getAge() ? t : k).get();
+    }
 
 
 }
