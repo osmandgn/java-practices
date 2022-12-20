@@ -1,46 +1,44 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class MailChecker {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         Message message = new Message();
-        new Thread(() -> {
-            try {
-                message.getMessage();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }).start();
-
-        new Thread(() -> message.sendMessage("Selam")).start();
-
-
+        new Thread(message::getMessage).start();
+        new Thread(() -> message.sendMessage("Hello World")).start();
     }
 }
 
 class Message {
-    List<String> mailBox;
+    private String message;
 
-    public void getMessage() throws InterruptedException {
-        if (this.mailBox != null) {
-            for (String mail : this.mailBox) {
-                System.out.println(mail);
+    public synchronized void getMessage() {
+        try {
+            if (message == null) {
+                System.out.println("Mail Bekleniyor");
+                wait();
             }
-        } else {
-            System.out.println("Mail Bekleniyor");
-            wait();
             System.out.println("Mailler Aliniyor");
-            Thread.sleep(5000);
-            getMessage();
+            Thread.sleep(3000);
+            System.out.println(message);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void sendMessage(String mail) {
+        try {
+            Thread.sleep(3000);
+            System.out.println("Mail Gonderiliyor");
+            Thread.sleep(2000);
+            message = mail;
+            synchronized (this) {
+                notify();
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
 
+
     }
-
-    public void sendMessage(String message) {
-        System.out.println("Mail Gonderiliyor");
-        mailBox.add(message);
-        notify();
-    }
-
-
 }
-
