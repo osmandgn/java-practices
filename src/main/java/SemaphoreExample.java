@@ -9,10 +9,11 @@ public class SemaphoreExample {
         CarPark car1 = new CarPark(semaphore, "Car 1");
         CarPark car2 = new CarPark(semaphore, "Car 2");
         CarPark car3 = new CarPark(semaphore, "Car 3");
+        CarPark car4 = new CarPark(semaphore, "Car 4");
         car1.start();
         car2.start();
         car3.start();
-
+        car4.start();
 
     }
 }
