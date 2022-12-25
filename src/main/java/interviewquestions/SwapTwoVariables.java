@@ -1,3 +1,5 @@
+package interviewquestions;
+
 public class SwapTwoVariables {
     public static void main(String[] args) {
         int a = 3;

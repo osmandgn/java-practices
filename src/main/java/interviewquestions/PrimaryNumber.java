@@ -1,3 +1,5 @@
+package interviewquestions;
+
 import java.util.stream.IntStream;
 
 public class PrimaryNumber {

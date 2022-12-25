@@ -1,3 +1,5 @@
+package interviewquestions;
+
 public class AsteriskPattern {
     /*
     ```
