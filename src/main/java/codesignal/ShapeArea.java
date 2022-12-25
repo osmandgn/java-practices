@@ -10,7 +10,7 @@ public class ShapeArea {
      */
 
     public static void main(String[] args) {
-        System.out.println(solution(3));
+        System.out.println(solution(4));
 
     }
     static int solution(int n) {
