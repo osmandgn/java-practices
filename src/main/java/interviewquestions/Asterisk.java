@@ -13,6 +13,8 @@ public class Asterisk {
             System.out.println(x);
             x = x + "**";
         }
+
+
         System.out.println(x);
         for (int j = i; j > 0; j--) {
             x = x.substring(0, x.length() - 2);
