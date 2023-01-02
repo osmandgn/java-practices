@@ -15,6 +15,8 @@ your task is to return the total sum of all rooms that are suitable for the Code
 public class MatrixElementsSum {
     public static void main(String[] args) {
 
+
+
     }
 
     int solution(int[][] matrix) {
