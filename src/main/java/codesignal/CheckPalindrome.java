@@ -16,6 +16,11 @@ solution(inputString) = true.
 
 public class CheckPalindrome {
 
+    public static void main(String[] args) {
+        System.out.println(solution("aabaa"));
+        System.out.println(solution2("aabaa"));
+    }
+git
 
     static boolean solution(String inputString) {
         String newInputString = "";
